@@ -1,0 +1,38 @@
+Table,Field,Description
+Customers,Birthday,Customer date of birth
+Products,Brand,Product brand
+Products,Category,Product category name
+Products,CategoryKey,Key to identify product categories
+Customers,City,Customer city
+Products,Color,Product color
+Customers,Continent,Customer continent
+Customers,Country,Customer country
+Stores,Country,Store country
+Exchange Rates,Currency,Currency code
+Sales,Currency Code,Currency used to process the order
+Customers,CustomerKey,Primary key to identify customers
+Sales,CustomerKey,Unique key identifying which customer placed the order
+Exchange Rates,Date,Date
+Sales,Delivery Date,Date the order was delivered
+Exchange Rates,Exchange,Exchange rate compared to USD
+Customers,Gender,Customer gender
+Sales,Line Item,Identifies individual products purchased as part of an order
+Customers,Name,Customer full name
+Stores,Open Date,Store open date
+Sales,Order Date,Date the order was placed
+Sales,Order Number,Unique ID for each order
+Products,Product Name,Product name
+Products,ProductKey,Primary key to identify products
+Sales,ProductKey,Unique key identifying which product was purchased
+Sales,Quantity,Number of items purchased
+Stores,Square Meters,Store footprint in square meters
+Customers,State,Customer state (full)
+Stores,State,Store state
+Customers,State Code,Customer state (abbreviated)
+Stores,StoreKey,Primary key to identify stores
+Sales,StoreKey,Unique key identifying which store processed the order
+Products,Subcategory,Product subcategory name
+Products,SubcategoryKey,Key to identify product subcategories
+Products,Unit Cost USD,Cost to produce the product in USD
+Products,Unit Price USD,Product list price in USD
+Customers,Zip Code,Customer zip code

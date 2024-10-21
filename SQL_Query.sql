@@ -11,11 +11,9 @@ FROM   customers AS c
        INNER JOIN sales AS s1
                ON s1.customerkey = c.customerkey -- First alias for sales
        INNER JOIN products AS p
-               ON s1.productkey = p.productkey
-       -- Second alias for Joined products table
+               ON s1.productkey = p.productkey-- Second alias for Joined products table
        INNER JOIN stores AS st
-               ON s1.storekey = st.storekey
--- Third alias for Joined stores table
+               ON s1.storekey = st.storekey-- Third alias for Joined stores table
 LIMIT  0, 200000;
 
 SELECT gender,
@@ -88,3 +86,39 @@ FROM   sales s
 GROUP  BY c.country
 ORDER  BY total_spent DESC
 LIMIT  5; 
+
+-- sales by months
+SELECT Date_format( ` order_date ` , '%Y-%m')   AS month,
+       Sum( ` quantity ` * ` unit_price_usd ` ) AS total_sales
+FROM   products p
+       INNER JOIN sales s
+               ON s.productkey = p.productkey
+GROUP  BY month
+ORDER  BY month; 
+
+SELECT p.product_name,
+       Sum(quantity)                  AS total_quantity_sold,
+       Sum(quantity * unit_price_usd) AS total_revenue
+FROM   products p
+       INNER JOIN sales s
+               ON s.productkey = p.productkey
+GROUP  BY product_name
+ORDER  BY total_quantity_sold DESC; 
+
+SELECT city,
+       Sum(quantity * unit_price_usd) AS total_sales
+FROM   customers AS c
+       INNER JOIN sales AS s1
+               ON s1.customerkey = c.customerkey
+       INNER JOIN products AS p
+               ON s1.productkey = p.productkey
+GROUP  BY city
+ORDER  BY total_sales DESC;
+
+SELECT currency_code,
+       Sum(Round(quantity * unit_price_usd, 2)) AS total_sales
+FROM   sales s
+       INNER JOIN products AS p
+               ON s.productkey = p.productkey
+GROUP  BY currency_code
+ORDER  BY total_sales DESC; 
